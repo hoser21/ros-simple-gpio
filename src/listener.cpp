@@ -1,14 +1,14 @@
 #include "ros/ros.h"
 #include "std_msgs/Bool.h"
 
-void chatterCallback(const std_msg::Bool msg)
+void chatterCallback(const std_msgs::Bool msg)
 {
     ROS_INFO("I head: [%d]", msg.data);
 }
 
 int main(int argc, char **argv)
 {
-    ros::int(argc, argv, "listener");
+    ros::init(argc, argv, "listener");
 
     ros::NodeHandle nh;
 

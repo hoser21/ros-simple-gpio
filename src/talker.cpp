@@ -1,21 +1,21 @@
 #include "ros/ros.h"
 #include "std_msgs/Bool.h"
 
-int main(int argc, char **argc)
+int main(int argc, char **argv)
 {
     ros::init(argc, argv, "simple_gpio");
 
-    ros::NodeHandle nd;
+    ros::NodeHandle nh;
 
     ros::Publisher pub = nh.advertise<std_msgs::Bool>("chatter", 1000);
 
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(1);
 
     bool led = false;
 
-    while (ros::okay())
+    while (ros::ok())
     {
-        std_msg::Bool msg;
+        std_msgs::Bool msg;
 
         led = !led;
         msg.data = led;
@@ -24,7 +24,7 @@ int main(int argc, char **argc)
 
         pub.publish(msg);
 
-        ros::sinOnce();
+        ros::spinOnce();
 
         loop_rate.sleep();
     }
