@@ -147,7 +147,7 @@ add_executable(listener src/listener.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(talker ${catkin_LIBRARIES})
-target_link_libraries(listener ${catkin_LIBRARIES} -lwiringPi)
+target_link_libraries(listener ${catkin_LIBRARIES} -lpigpio -lrt)
 
 #############
 ## Install ##
